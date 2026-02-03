@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Resume - Kandula Manasa{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>My Resume</h1>
+        <p class="breadcrumb">Home > Resume</p>
+    </div>
+</div>
+
+<section class="resume-section">
+    <div class="container">
+        <div class="resume-grid">
+            <div class="resume-upload">
+                <h2>Upload Your Resume</h2>
+                <p>Share your resume for future opportunities or download mine below.</p>
+                
+                <form method="POST" enctype="multipart/form-data" class="upload-form">
+                    <div class="file-input-wrapper">
+                        <input type="file" id="resume_file" name="resume_file" required 
+                               accept=".pdf,.txt,.doc,.docx,.png,.jpg,.jpeg,.gif"
+                               class="file-input">
+                        <label for="resume_file" class="file-label">
+                            <span class="file-icon">📄</span>
+                            <span class="file-text">Choose a file or drag it here</span>
+                            <span class="file-hint">Supported: PDF, DOC, DOCX, TXT, PNG, JPG (Max 16MB)</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Upload Resume</button>
+                </form>
+                
+                <h3>Download My Resume</h3>
+                <p>Get a copy of my professional resume:</p>
+                <a href="#" class="btn btn-secondary" download>Download Resume (PDF)</a>
+            </div>
+            
+            <div class="resume-content">
+                <h2>Professional Resume</h2>
+
+                <div class="resume-header-top">
+                    <h3>Kandula Manasa</h3>
+                    <p>+91 8688032476 | Bethupally, Telangana, India | <a href="mailto:kandulamanasa78@gmail.com">kandulamanasa78@gmail.com</a></p>
+                    <p><strong>College ID:</strong> 22C61A6610</p>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Professional Summary</h3>
+                    <p>Highly motivated and adaptable B.Tech Information Technology graduate with a strong foundation in software development principles and programming. Demonstrates proven ability to solve complex problems and collaborate effectively within cross-functional teams. Eager to leverage technical skills and a commitment to continuous learning to contribute to the success of a dynamic organization.</p>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Technical Skills</h3>
+                    <ul class="skills-list">
+                        <li>Core Java</li>
+                        <li>C (Basics)</li>
+                        <li>Python (Basics)</li>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>SQL</li>
+                        <li>Data Structures & Algorithms, OOPs, SDLC</li>
+                    </ul>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Professional Skills</h3>
+                    <ul class="skills-list">
+                        <li>Communication and Collaboration</li>
+                        <li>Problem-Solving</li>
+                        <li>Adaptability and Proactivity</li>
+                        <li>Leadership and Time Management</li>
+                    </ul>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Education</h3>
+                    <div class="resume-item">
+                        <h4>Pursuing: Bachelor of Technology in Computer Science & Engineering (Specialization: Artificial Intelligence & Machine Learning)</h4>
+                        <p>Mother Teresa Institute of Science and Technology College, Sathupally, Telangana, India</p>
+                        <p><em>2022 - Present (CGPA: 8.05)</em></p>
+                    </div>
+
+                    <div class="resume-item">
+                        <h4>Telangana State Board Intermediate Education (MPC) - 04/2022</h4>
+                        <p>Vidhya Bharathi Junior College, Sathupally, Telangana, India</p>
+                        <p><em>Percentage: 75%</em></p>
+                    </div>
+
+                    <div class="resume-item">
+                        <h4>Telangana State Board Secondary Education - 04/2020</h4>
+                        <p>S.D.V.R Z.P.S.S High School, B.Gangaram, Telangana, India</p>
+                        <p><em>CGPA: 8.0/10</em></p>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Academic Projects</h3>
+                    <div class="resume-item">
+                        <h4>Calgary Crime Analysis</h4>
+                        <p>To analyze crime patterns in Calgary and understand trends across time, location, and crime types. Uses publicly available crime data from the Calgary Police Service (CPS) open data portal. Examines crime trends by year, month, or season and helps identify increases or decreases in crime over time.</p>
+                        <p><strong>Technologies:</strong> Python, Pandas, Matplotlib, Seaborn</p>
+                    </div>
+
+                    <div class="resume-item">
+                        <h4>Expense Tracker</h4>
+                        <p>To help users record, track, and manage their daily expenses efficiently. Provides a clear view of spending habits and improves financial planning.</p>
+                        <p><strong>Technologies:</strong> HTML, CSS, JavaScript, SQL, Python</p>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Certifications</h3>
+                    <ul class="skills-list">
+                        <li>Introduction to Artificial Intelligence (Infosys & Springboard)</li>
+                        <li>Hackathon Certification - Data Science with ML & AI</li>
+                        <li>Cisco Certification - Data Structures</li>
+                    </ul>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Interests</h3>
+                    <p>Listening to Music, Reading Books, Watching Series</p>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Declaration</h3>
+                    <p>I hereby declare that all of the above furnished information is true to the best of my knowledge.</p>
+                    <p><strong>Place:</strong> Bethupally</p>
+                    <p><strong>Signature:</strong> Kandula Manasa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="uploaded-files-section">
+    <div class="container">
+        <h2>Uploaded Resumes</h2>
+        
+        {% if uploaded_files %}
+        <div class="files-list">
+            {% for file in uploaded_files|reverse %}
+            <div class="file-item">
+                <div class="file-info">
+                    <span class="file-name">{{ file.original_name }}</span>
+                    <span class="file-date">{{ file.upload_time }}</span>
+                </div>
+                <a href="{{ url_for('download', filename=file.filename) }}" class="btn btn-small">Download</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="no-files">No resumes uploaded yet.</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
